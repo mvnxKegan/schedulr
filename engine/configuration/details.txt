@@ -1,0 +1,12 @@
+//Config file details:
+File Name: config.ini
+loading the file:
+	global $config;
+	$config = parse_ini_file('engine/configuration/config.ini');
+Calling the details in function:
+	$GLOBAL = $GLOBALS;
+Using config Data:
+	$GLOBAL['config']['config_Setting']
+	
+// Database Object items
+Get data from object: $object->field
