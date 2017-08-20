@@ -6,15 +6,3 @@ Date & Time: 2017-08-11 03:37:09pm - SQL State Error:42S02 - Error Array: a:1:{i
 Date & Time: 2017-08-11 03:37:10pm - SQL State Error:42S02 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1146;s:8:"sqlstate";s:5:"42S02";s:5:"error";s:52:"Table 'schedulr.somethsfjaksdjfasddjf' doesn't exist";}}
 Date & Time: 2017-08-11 03:37:10pm - SQL State Error:42S02 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1146;s:8:"sqlstate";s:5:"42S02";s:5:"error";s:52:"Table 'schedulr.somethsfjaksdjfasddjf' doesn't exist";}}
 Date & Time: 2017-08-11 03:37:10pm - SQL State Error:42S02 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1146;s:8:"sqlstate";s:5:"42S02";s:5:"error";s:52:"Table 'schedulr.somethsfjaksdjfasddjf' doesn't exist";}}
-Date & Time: 2017-08-16 01:44:21pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 01:44:21pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 01:44:47pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 01:44:47pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 02:16:14pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 02:16:14pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 02:18:11pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 02:18:11pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 02:21:54pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 02:21:54pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 03:28:30pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}
-Date & Time: 2017-08-16 03:28:30pm - SQL State Error:3D000 - Error Array: a:1:{i:0;a:3:{s:5:"errno";i:1046;s:8:"sqlstate";s:5:"3D000";s:5:"error";s:20:"No database selected";}}

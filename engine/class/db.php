@@ -1,6 +1,6 @@
 <?php
 	class DB {
-
+		
 		private $_mysqli;
 		private $_query;
 		private $_results = array();
@@ -14,8 +14,8 @@
 		//instanciates the class for usage
 		Public static function getInstance() {
 			$GLOBAL = $GLOBALS;
-			
 			//Check for instance, else create an instance
+			
 			if(!isset(self::$instance)) {
 				self::$instance = new DB();
 			}
@@ -24,14 +24,17 @@
 		}
 		public function __construct() {
 			$GLOBAL = $GLOBALS;
+
 			try{
 				//Attempt to instanciate a connection to the DB
-				$connection = $this->_mysqli = new mysqli($GLOBAL['config']['DBhost'], $GLOBAL['config']['DBuser'], $GLOBAL['config']['DBpass'], $GLOBAL['config']['DBname']);
-				if($connection->connect_error){ //If connetion fails, kill connection and log error
+				$connection = $this->_mysqli = new mysqli($GLOBAL["config"]["setting_db_host"], $GLOBAL["config"]["setting_db_user"], $GLOBAL["config"]["setting_db_pass"], $GLOBAL["config"]["setting_db_database"]);
+				if($connection->connect_error){
+					//If connetion fails, kill connection and log error
 					die();
 					$this->writeToLog("ConnectionError");
 				}
-				else{ //If Connection successful, log in DB
+				else{
+					//If Connection successful, log in DB
 					$this->writeToLog("Connection");
 				}
 			} catch(Exception $e){
@@ -44,6 +47,7 @@
 		public function query($sql_query) {
 			$GLOBAL = $GLOBALS;
 			$this->_results = array();
+
 			if($this->_query = $this->_mysqli->query($sql_query)) {
 				while($row = $this->_query->fetch_object()) {
 					$this->_results[] = $row;
@@ -59,19 +63,16 @@
 		//Return Query Results
 		public function results() {
 			$GLOBAL = $GLOBALS;
-			
 			return $this->_results;
 		}
 		public function count() {
 			$GLOBAL = $GLOBALS;
-			
 			return $this->_count;
 		}
 		
 		//Database Logging Functions
 		public function writeToLog($logType) {
 			$GLOBAL = $GLOBALS;
-			
 			if($logType === "Error"){ // Write to Error Log
 				$logRecordData = "SQL State Error:". $this->_mysqli->sqlstate;
 				$logRecordData .= " - Error Array: " . serialize($this->_mysqli->error_list);

@@ -1,0 +1,4 @@
+Database Log File Containing Logs for DB Transactions
+Date & Time: 2017-08-11 01:15:06pm - 
+Date & Time: 2017-08-11 01:16:28pm - 
+Date & Time: 2017-08-11 01:21:44pm - 
