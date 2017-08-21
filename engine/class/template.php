@@ -132,6 +132,7 @@
 			
 			echo $html;
 		}
+
 		public function getFooter(){
 			$GLOBALS = $GLOBALS;
 			$DB = DB::getInstance();
@@ -178,63 +179,37 @@
 			
 			templates::getView($html, $viewID);
 		}
-		public function getContent($categoryID){
+		public function getContentCategory($categoryID){
+			$GLOBALS = $GLOBALS;
+			$DB = DB::getInstance();
+			$html = '';
+			$viewID = '';
+			
+			//Get Content Category requested
+			$DB = $DB->query("select * from ccp_content_items where _category_id = '". $categoryID ."'");
+			foreach($DB->results() as $banner) {
+				$html .= '';
+				$viewID = $banner->view_id;
+			}
+			
+			//get content Items related to Category
+			templates::getContent($categoryID, $viewID);
+		}
+		public function getContent($categoryID, $viewID){
 			$GLOBALS = $GLOBALS;
 			$DB = DB::getInstance();
 			$html = '';
 			
-			$DB = $DB->query("select * from ccp_content_category where _id = ". $categoryID ."");
-			foreach($DB->results() as $category) {
-				$html .= '
-					<div class="section primary-section" id="service">
-						<div class="container">
-							<div class="title">
-								<h1>'. $category->title .'</h1>
-								<p>'. $category->description .'</p>
-							</div>
-							<div class="row-fluid">
-				';
-				$DB = $DB->query("select * from ccp_content_items where _category_id = 1");
-				foreach($DB->results() as $content) {
-					$html .= $content->content;
-					$html .= '
-						<div class="span4">
-							<div class="centered service">
-								<div class="circle-border zoom-in">
-									<img class="img-circle" src="'. $content->content .'" alt="service 3">
-								</div>
-								'. $content->content .'
-							</div>
-						</div>';
-				}
-				$html .='</div></div></div>';
+			//Get Content Items
+			$DB = $DB->query("select * from ccp_content_items where _category_id = 1");
+			foreach($DB->results() as $content) {
+				$html .= $content->content;
 			}
 			
-			echo $html;
 			
-			/*
-			$viewID = '';
-			
-			$DB = $DB->query("select * from ccp_content_items where _category_id = '". $categoryID ."'");
-			foreach($DB->results() as $banner) {
-				$html .= '
-					<div class="da-slide">
-						<h2 class="fittext2">'. $banner->title .'</h2>
-						<h4>'. $banner->sub_title .'</h4>
-						'. $banner->content .'
-						<div class="da-img">
-							<img src="'. $banner->image .'" alt="image01" width="320">
-						</div>
-					</div>
-				';
-			}
-			$DB = $DB->query("select * from ccp_content_category where _id = '". $categoryID ."'");
-			foreach($DB->results() as $bannerCategory) {
-				$viewID .= $bannerCategory->view_id;
-			}
-			
+			//Send content Items into view
 			templates::getView($html, $viewID);
-			*/
+			
 		}
 		public function getBlog($categoryID){
 			$GLOBALS = $GLOBALS;
@@ -315,7 +290,7 @@
 			templates::getCSS();
 			templates::getNavigation();
 			templates::getBanner('1');
-			templates::getContent();
+			templates::getContentCategory('2');
 			templates::getFooter();
 		}
 		
