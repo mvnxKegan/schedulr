@@ -302,29 +302,6 @@ INSERT INTO `ccp_template` (`_id`, `title`, `description`, `gui_type`, `active`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ccp_users`
---
-
-CREATE TABLE `ccp_users` (
-  `_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `number` varchar(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ccp_users`
---
-
-INSERT INTO `ccp_users` (`_id`, `name`, `email`, `number`) VALUES
-(1, 'kegan peach', 'kegan@keagan.com', '0746890472'),
-(2, 'bobby carrot', 'bobby@carrot.com', '0761152288'),
-(3, 'kegan peachdkfljasdl', 'kegan@keagan.comdfd', '0746890472'),
-(4, 'bobby carrotfasdf', 'bobby@carrot.comfasdf', '0761152288');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ccp_views_table`
 --
 
@@ -444,12 +421,6 @@ ALTER TABLE `ccp_template`
   ADD PRIMARY KEY (`_id`);
 
 --
--- Indexes for table `ccp_users`
---
-ALTER TABLE `ccp_users`
-  ADD PRIMARY KEY (`_id`);
-
---
 -- Indexes for table `ccp_views_table`
 --
 ALTER TABLE `ccp_views_table`
@@ -481,10 +452,6 @@ ALTER TABLE `ccp_script_code`
 ALTER TABLE `ccp_style_design`
   MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `ccp_users`
---
-ALTER TABLE `ccp_users`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `ccp_views_table`
 --
