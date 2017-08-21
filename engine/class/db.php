@@ -14,8 +14,8 @@
 		//instanciates the class for usage
 		Public static function getInstance() {
 			$GLOBAL = $GLOBALS;
-			//Check for instance, else create an instance
 			
+			//Check for instance, else create an instance
 			if(!isset(self::$instance)) {
 				self::$instance = new DB();
 			}
@@ -26,9 +26,8 @@
 			$GLOBAL = $GLOBALS;
 			try{
 				//Attempt to instanciate a connection to the DB
-				$connection = $this->_mysqli = new mysqli($GLOBAL["config"]["setting_db_host"], $GLOBAL["config"]["setting_db_user"], $GLOBAL["config"]["setting_db_pass"], $GLOBAL["config"]["setting_db_database"]);
-				if($connection->connect_error){
-					//If connetion fails, kill connection and log error
+				$connection = $this->_mysqli = new mysqli($GLOBAL['config']['DBhost'], $GLOBAL['config']['DBuser'], $GLOBAL['config']['DBpass'], $GLOBAL['config']['DBname']);
+				if($connection->connect_error){ //If connetion fails, kill connection and log error
 					die();
 					$this->writeToLog("ConnectionError");
 				}
