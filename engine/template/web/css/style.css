@@ -27,19 +27,22 @@
 /*
 1. General
 **********************************************************************/
+
+
+
  body {
     font-family:'Roboto', sans-serif;
-    color: #FFF;
+    color: var(--third-color);
     line-height:1.2em;
     font-size:17px;
     line-height:20px;
 }
 a {
-    color:#181A1C;
+    color:var(--Second-color);
     text-decoration: none;
 }
 a:hover {
-    color: #FECE1A;
+    color: var(--first-color);
     text-decoration:none;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -51,10 +54,10 @@ h1 {
 p {
     padding: 10px;
     font-weight: 100;
-    color: #fff;
+    color: var(--third-color);
 }
 .navbar {
-    background: #181A1C;
+    background: var(--Second-color);
     margin-bottom:0;
     min-height:70px;
 }
@@ -65,7 +68,7 @@ p {
     padding-top:0;
 }
 .navbar-inner {
-    background: #181A1C;
+    background: var(--Second-color);
     border-radius:0;
     filter: none;
     border: none;
@@ -82,17 +85,17 @@ p {
     margin:10px 3px;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    border: 1px solid #181A1C;
+    border: 1px solid var(--Second-color);
     box-shadow: none;
     font-size:15px;
     text-shadow: none;
-    color: #fff;
+    color: var(--third-color);
     transition: border-color 1s ease;
 }
 .navbar .nav > li:hover> a, .navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
-    border: 1px solid #FECE1A;
-    color: #fff;
-    background-color: #181A1C;
+    border: 1px solid var(--first-color);
+    color: var(--third-color);
+    background-color: var(--Second-color);
     transition: border-color 1s ease;
 }
 .nav-pills {
@@ -106,15 +109,15 @@ p {
     margin-right:5px;
     padding-left:25px;
     padding-right:25px;
-    border: 1px solid #181A1C;
+    border: 1px solid var(--Second-color);
 }
 .nav-pills > li > a:hover, .nav-pills > .active > a, .nav-pills > .active > a:hover, .nav-pills > .active > a:focus {
-    background: #181A1C;
-    color: #fff;
+    background: var(--Second-color);
+    color: var(--third-color);
 }
 .navbar .btn-navbar:hover, .navbar .btn-navbar {
     border-radius:0;
-    background:#FECE1A;
+    background:var(--first-color);
     color: #000;
 }
 /******
@@ -133,7 +136,7 @@ p {
     text-align: center;
 }
 .highlighted-box {
-    background:#F4F8F9;
+    background:var(--third-color);
     padding:20px 30px;
 }
 .highlighted-box h1 {
@@ -142,12 +145,12 @@ p {
 .large-text {
     line-height:1.2em;
     font-size: 30px;
-    color: #181A1C;
+    color: var(--Second-color);
     padding:20px;
     margin-bottom:20px;
 }
 .highlighted-box h1, .highlighted-box p {
-    color: #181A1C !important;
+    color: var(--Second-color) !important;
 }
 .circle-border {
     display: inline-block;
@@ -155,7 +158,7 @@ p {
     -moz-border-radius: 500px;
     border-radius: 500px;
     -khtml-border-radius: 500px;
-    border: 3px solid #fff;
+    border: 3px solid var(--third-color);
 }
 .left-align {
     text-align:left;
@@ -176,7 +179,7 @@ p {
     text-align:center;
     width: 0;
     height: 0;
-    border-top: 30px solid #181A1C;
+    border-top: 30px solid var(--Second-color);
     border-left: 585px outset transparent;
     border-right: 585px outset transparent;
     position: relative;
@@ -206,34 +209,34 @@ p {
 **********/
  .button,  .button:visited, .button:focus {
     display:inline-block;
-    border:1px solid #181A1C;
-    color:#181A1C;
+    border:1px solid var(--Second-color);
+    color:var(--Second-color);
     background-color:transparent;
     padding:15px 30px;
     font-size:17px;
     line-height:auto;
 }
 .button:hover, .button:active{
-    background-color:#181A1C;
-    color:#fff;
+    background-color:var(--Second-color);
+    color:var(--third-color);
 }
 .button-sp, .button-sp:visited, .button-sp:focus {
     border:none;
-    background-color:#FECE1A;
-    color:#181A1C;
+    background-color:var(--first-color);
+    color:var(--Second-color);
 }
 .button-sp:hover, .button-sp:active {
-    background-color:#181A1C;
-    color:#FECE1A;
+    background-color:var(--Second-color);
+    color:var(--first-color);
 }
 .button-ps, .button-ps:visited, .button-ps:focus {
     border:none;
-    background-color:#181A1C;
-    color:#FECE1A;
+    background-color:var(--Second-color);
+    color:var(--first-color);
 }
 .button-ps:hover, .button-ps:active {
-    background-color:#FECE1A;
-    color:#181A1C;
+    background-color:var(--first-color);
+    color:var(--Second-color);
 }
 /*
 2.3 Thumbnails - Predefined bootstrap's thumbnail class.
@@ -261,7 +264,7 @@ p {
     width:80px;
     height:80px;
     font-size:40px;
-    color:#fff;
+    color:var(--third-color);
     text-decoration:none;
     line-height: 70px;
     text-align: center;
@@ -283,7 +286,7 @@ p {
     z-index:4;
 }
 .thumbnail h3 {
-    color: #FECE1A;
+    color: var(--first-color);
     margin-top:10px;
     font-size:20px;
 }
@@ -297,7 +300,7 @@ p {
     left:0;
     width:100%;
     height:100%;
-    background:#181A1C;
+    background:var(--Second-color);
     position:absolute;
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
@@ -329,10 +332,10 @@ p {
     padding:0;
     width:32px;
     height:32px;
-    color: #FECE1A;
+    color: var(--first-color);
 }
 .social li a:hover {
-    color:#181A1C;
+    color:var(--Second-color);
 }
 /*
 3. Sections 
@@ -355,38 +358,38 @@ p {
 }
 .section .title > p {
     font-size: 20px;
-    color: #FFF;
+    color: var(--third-color);
     font-weight: lighter;
 }
 .primary-section {
-    background:#181A1C;
+    background:var(--Second-color);
 }
 .primary-section .triangle {
-    border-top: 40px solid #FECE1A;
+    border-top: 40px solid var(--first-color);
 }
 .primary-section .title {
-    border-bottom: 1px solid #FFF;
+    border-bottom: 1px solid var(--third-color);
 }
 .primary-section, .primary-section .title p, .primary-section h3 {
-    color: #FECE1A;
+    color: var(--first-color);
 }
 .primary-section h1 {
-    color:#FFF;
+    color:var(--third-color);
 }
 .secondary-section {
-    background:#FECE1A;
+    background:var(--first-color);
 }
 .secondary-section .title {
-    border-bottom: 1px solid #181A1C;
+    border-bottom: 1px solid var(--Second-color);
 }
 .secondary-section h1, .secondary-section .title p {
-    color: #181A1C;
+    color: var(--Second-color);
 }
 /* Third section use bacground image */
 .third-section {
     padding-bottom: 70px;
-    background: #181A1C url(../images/brand-bg.png) no-repeat center;
-    border-top:6px solid #FECE1A;
+    background: var(--Second-color) url(../images/brand-bg.png) no-repeat center;
+    border-top:6px solid var(--first-color);
 }
 .third-section .container {
     padding-top:20px;
@@ -394,7 +397,7 @@ p {
 }
 .third-section .title {
     border-bottom: 1px solid #A1AAB7;
-    color: #FECE1A;
+    color: var(--first-color);
 }
 .sub-section {
     margin-top:30px;
@@ -424,7 +427,7 @@ p {
 ***************************************/
  .single-project {
     margin-bottom:30px;
-    background:#181A1C;
+    background:var(--Second-color);
 }
 .single-project img {
     width:100%;
@@ -438,7 +441,7 @@ p {
 .project-title {
     margin-top:15px;
     margin-bottom:15px;
-    border-bottom:1px solid #FECE1A;
+    border-bottom:1px solid var(--first-color);
 }
 .project-title h3 {
     float:left;
@@ -447,11 +450,11 @@ p {
     width:80%;
 }
 .project-title .close {
-    color: #FECE1A;
+    color: var(--first-color);
     margin-top:10px;
 }
 .project-info span, .project-title h3 {
-    color:#FECE1A;
+    color:var(--first-color);
 }
 .project-info {
     font-weight:100;
@@ -482,16 +485,16 @@ p {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding: 10px;
-    border: 1px solid #fff;
+    border: 1px solid var(--third-color);
 }
 .team .thumbnail:hover .social {
     z-index: 5;
 }
 .team .thumbnail:hover .social a {
-    color:#fff;
+    color:var(--third-color);
 }
 .team .thumbnail .mask {
-    background: #FECE1A;
+    background: var(--first-color);
 }
 .team .thumbnail .mask h2 {
     margin-top:20%;
@@ -516,7 +519,7 @@ p {
 }
 .skills li {
     margin-bottom:30px;
-    background:#FFF;
+    background:var(--third-color);
     height:40px;
     padding:1px;
 }
@@ -527,12 +530,12 @@ p {
     margin:0;
     left: 10px;
     z-index: 1;
-    color: #181A1C;
+    color: var(--Second-color);
 }
 .skills li .bar {
     height:40px;
     position:absolute;
-    background-color: #FECE1A;
+    background-color: var(--first-color);
 }
 /*
 3.4 Clients
@@ -541,7 +544,7 @@ p {
     border:1px solid white;
 }
 .client-slider img:hover {
-    background-color:#FECE1A;
+    background-color:var(--first-color);
 }
 .client-nav {
     list-style:none;
@@ -555,24 +558,24 @@ p {
 .client-nav li a {
     display:inherit;
     padding:5px;
-    background:#FECE1A;
+    background:var(--first-color);
     border-radius:3px;
     width:20px;
     height:20px;
 }
 .client-nav li a:hover {
-    background:#181A1C;
+    background:var(--Second-color);
 }
 .testimonial p {
-    color:#181A1C;
-    background:#FECE1A;
+    color:var(--Second-color);
+    background:var(--first-color);
     padding:15px;
     margin:0;
 }
 .testimonial .arrow {
     margin-left:10px;
     width:0;
-    border-top:10px solid #FECE1A;
+    border-top:10px solid var(--first-color);
     border-left: 20px outset transparent;
     border-right: 20px outset transparent;
 }
@@ -621,10 +624,10 @@ p {
     text-align:center;
 }
 .price-column h3 {
-    background-color:#181A1C;
+    background-color:var(--Second-color);
     text-transform:uppercase;
     text-align: center;
-    color:#FECE1A;
+    color:var(--first-color);
     padding:40px 0px;
     font-size: 36px;
     margin-top:0px;
@@ -653,7 +656,7 @@ p {
 .price-text{
     margin:30px 0 20px;
     font-size:20px;
-    color: #181A1C;
+    color: var(--Second-color);
     font-weight:normal;
 }
 /*
@@ -679,18 +682,18 @@ p {
     margin: 0 0 0 20px;
 }
 .newsletter .button-sp:hover, .newsletter .button-sp:active {
-    background-color:#FFF;
-    color:#181A1C;
+    background-color:var(--third-color);
+    color:var(--Second-color);
 }
 
 /*
 3.7 Contact
 ********************************************************************/
  .contact {
-    background: #FECE1A;
+    background: var(--first-color);
 }
 .contact h1, .contact h2, .contact h3, .contact h4, .contact h5, .contact h6, .contact .section .title > p, .contact .social > li > a {
-    color: #181A1C;
+    color: var(--Second-color);
 }
 .contact textarea, .contact input[type="text"], .contact input[type="email"] {
     padding: 10px;
@@ -701,7 +704,7 @@ p {
     height: 120px;
 }
 .contacts, .contact .social {
-    color: #fff;
+    color: var(--third-color);
     list-style: none;
     margin-left: 10px;
 }
@@ -709,7 +712,7 @@ p {
     margin-top: 15px;
 }
 .contacts > li > a {
-    color: #fff;
+    color: var(--third-color);
 }
 .contact-info {
     margin-top:10px;
@@ -750,13 +753,13 @@ p {
     -webkit-transition: margin 0.4s;
 }
 .contact .social li a {
-    color:#fff;
+    color:var(--third-color);
 }
 .contact .social li a:hover {
-    color:#181A1C;
+    color:var(--Second-color);
 }
 .contact-form {
-    background:#fff;
+    background:var(--third-color);
     background: rgba(255, 255, 255, 0.9);
     z-index:110;
     position:relative;
@@ -775,7 +778,7 @@ p {
     font-size:17px;
 }
 .message-btn:hover {
-    background-color:#FECE1A;
+    background-color:var(--first-color);
 }
 .contact-info {
     text-align:center;
@@ -786,25 +789,25 @@ p {
     width:60%;
     margin:0 auto;
     padding:15px;
-    color:#181A1C;
+    color:var(--Second-color);
 }
 .black {
-    color:#181A1C;
+    color:var(--Second-color);
 }
 /*
 3.8 Footer
 ********************************************************************/
  .footer {
-    background: #181A1C;
+    background: var(--Second-color);
     text-align: center;
 }
 .footer > p {
-    color: #fff;
+    color: var(--third-color);
     margin:0;
 }
 
 .footer a{
-    color:#FECE1A;
+    color:var(--first-color);
 }
 
 .footer a:hover, .footer a:focus{
@@ -821,14 +824,14 @@ p {
     position:fixed;
     bottom:30px;
     right:20px;
-	border:1px solid #fff;
+	border:1px solid var(--third-color);
     display:none;
-    background: #FECE1A;
+    background: var(--first-color);
 }
 .scrollup > a {
     position:relative;
     top:7px;
-    color:#fff;
+    color:var(--third-color);
 }
 /*
 4 Responsible

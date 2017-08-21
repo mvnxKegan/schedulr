@@ -10,3 +10,22 @@ Using config Data:
 	
 // Database Object items
 Get data from object: $object->field
+
+//CSS
+Define Vars
+	:root {
+	  --main-color: #F06D06;
+	}
+Using Vars:
+	var(--first-color);
+	var(--Second-color);
+	var(--third-color);
+	
+	var(--font-color);
+	var(--a-normal-color);
+	var(--a-hover-color);
+	
+	var(--black-color);
+	var(--white-color);
+	var(--gray-color);
+	var(--error-color);
