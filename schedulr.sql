@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2017 at 05:35 PM
+-- Generation Time: Aug 22, 2017 at 05:49 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `schedulr`
 --
-CREATE DATABASE IF NOT EXISTS `schedulr` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `schedulr`;
 
 -- --------------------------------------------------------
 
@@ -28,7 +26,6 @@ USE `schedulr`;
 -- Table structure for table `ccp_banner_category`
 --
 
-DROP TABLE IF EXISTS `ccp_banner_category`;
 CREATE TABLE `ccp_banner_category` (
   `_id` int(11) NOT NULL,
   `_order_by` varchar(255) DEFAULT NULL,
@@ -50,7 +47,6 @@ INSERT INTO `ccp_banner_category` (`_id`, `_order_by`, `view_id`, `title`, `desc
 -- Table structure for table `ccp_banner_item`
 --
 
-DROP TABLE IF EXISTS `ccp_banner_item`;
 CREATE TABLE `ccp_banner_item` (
   `_id` int(11) NOT NULL,
   `_category_id` int(11) NOT NULL,
@@ -75,7 +71,6 @@ INSERT INTO `ccp_banner_item` (`_id`, `_category_id`, `title`, `sub_title`, `con
 -- Table structure for table `ccp_blog_category`
 --
 
-DROP TABLE IF EXISTS `ccp_blog_category`;
 CREATE TABLE `ccp_blog_category` (
   `_id` int(11) NOT NULL,
   `_order_by` varchar(255) DEFAULT NULL,
@@ -90,7 +85,6 @@ CREATE TABLE `ccp_blog_category` (
 -- Table structure for table `ccp_blog_item`
 --
 
-DROP TABLE IF EXISTS `ccp_blog_item`;
 CREATE TABLE `ccp_blog_item` (
   `_id` int(11) NOT NULL,
   `_category_id` int(11) NOT NULL,
@@ -106,7 +100,6 @@ CREATE TABLE `ccp_blog_item` (
 -- Table structure for table `ccp_content_category`
 --
 
-DROP TABLE IF EXISTS `ccp_content_category`;
 CREATE TABLE `ccp_content_category` (
   `_id` int(11) NOT NULL,
   `_parent_id` int(11) DEFAULT NULL,
@@ -124,7 +117,7 @@ CREATE TABLE `ccp_content_category` (
 
 INSERT INTO `ccp_content_category` (`_id`, `_parent_id`, `_order_by`, `view_id`, `title`, `description`, `topWrapper`, `bottomWrapper`) VALUES
 (1, NULL, 'none', 0, 'banner', NULL, NULL, NULL),
-(2, NULL, '1', 2, 'What We Do', NULL, NULL, NULL);
+(2, NULL, '1', 2, 'What We Do', 'sdfjasdklfj askddfja sdfja slkdkjf asdjf asjf askdjf asjdf asldjf asjf asdjf alsdjdf klasj fskdljf aslddjf alsjfasdfj adfj saddfj a', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -132,7 +125,6 @@ INSERT INTO `ccp_content_category` (`_id`, `_parent_id`, `_order_by`, `view_id`,
 -- Table structure for table `ccp_content_items`
 --
 
-DROP TABLE IF EXISTS `ccp_content_items`;
 CREATE TABLE `ccp_content_items` (
   `_id` int(11) NOT NULL,
   `_category_id` int(11) NOT NULL,
@@ -164,7 +156,6 @@ INSERT INTO `ccp_content_items` (`_id`, `_category_id`, `title`, `content`, `ima
 -- Table structure for table `ccp_email_templates`
 --
 
-DROP TABLE IF EXISTS `ccp_email_templates`;
 CREATE TABLE `ccp_email_templates` (
   `_id` int(11) NOT NULL,
   `_category_id` int(11) NOT NULL,
@@ -180,7 +171,6 @@ CREATE TABLE `ccp_email_templates` (
 -- Table structure for table `ccp_email_template_category`
 --
 
-DROP TABLE IF EXISTS `ccp_email_template_category`;
 CREATE TABLE `ccp_email_template_category` (
   `_id` int(11) NOT NULL,
   `_parent_id` int(11) DEFAULT NULL,
@@ -194,7 +184,6 @@ CREATE TABLE `ccp_email_template_category` (
 -- Table structure for table `ccp_form_category`
 --
 
-DROP TABLE IF EXISTS `ccp_form_category`;
 CREATE TABLE `ccp_form_category` (
   `_id` int(11) NOT NULL,
   `_parent_id` int(11) NOT NULL,
@@ -208,7 +197,6 @@ CREATE TABLE `ccp_form_category` (
 -- Table structure for table `ccp_form_template`
 --
 
-DROP TABLE IF EXISTS `ccp_form_template`;
 CREATE TABLE `ccp_form_template` (
   `_id` int(11) NOT NULL,
   `form_category_id` int(11) NOT NULL,
@@ -228,9 +216,9 @@ CREATE TABLE `ccp_form_template` (
 -- Table structure for table `ccp_pages`
 --
 
-DROP TABLE IF EXISTS `ccp_pages`;
 CREATE TABLE `ccp_pages` (
   `_id` int(11) NOT NULL,
+  `parent_id` int(11) DEFAULT NULL,
   `_content_category_id` int(11) NOT NULL,
   `_banner_category_id` int(11) DEFAULT NULL,
   `title` varchar(255) NOT NULL,
@@ -242,8 +230,14 @@ CREATE TABLE `ccp_pages` (
 -- Dumping data for table `ccp_pages`
 --
 
-INSERT INTO `ccp_pages` (`_id`, `_content_category_id`, `_banner_category_id`, `title`, `url_key`, `description`) VALUES
-(1, 1, 1, 'Home Page', 'home', NULL);
+INSERT INTO `ccp_pages` (`_id`, `parent_id`, `_content_category_id`, `_banner_category_id`, `title`, `url_key`, `description`) VALUES
+(1, NULL, 2, 1, 'Home', '#home', NULL),
+(2, NULL, 3, NULL, 'Services', '#service', NULL),
+(3, NULL, 4, NULL, 'portfolio', '#portfolio', NULL),
+(4, NULL, 5, NULL, 'About', '#about', NULL),
+(5, NULL, 6, NULL, 'Clients', '#clients', NULL),
+(6, NULL, 7, NULL, 'Price', '#price', NULL),
+(7, NULL, 8, NULL, 'Contact', '#contact', NULL);
 
 -- --------------------------------------------------------
 
@@ -251,7 +245,6 @@ INSERT INTO `ccp_pages` (`_id`, `_content_category_id`, `_banner_category_id`, `
 -- Table structure for table `ccp_script_code`
 --
 
-DROP TABLE IF EXISTS `ccp_script_code`;
 CREATE TABLE `ccp_script_code` (
   `_id` int(11) NOT NULL,
   `_template_id` int(11) NOT NULL,
@@ -273,7 +266,6 @@ INSERT INTO `ccp_script_code` (`_id`, `_template_id`, `title`, `import_js`, `cus
 -- Table structure for table `ccp_style_design`
 --
 
-DROP TABLE IF EXISTS `ccp_style_design`;
 CREATE TABLE `ccp_style_design` (
   `_id` int(11) NOT NULL,
   `_template_id` int(11) NOT NULL,
@@ -307,7 +299,6 @@ INSERT INTO `ccp_style_design` (`_id`, `_template_id`, `title`, `import_css`, `m
 -- Table structure for table `ccp_template`
 --
 
-DROP TABLE IF EXISTS `ccp_template`;
 CREATE TABLE `ccp_template` (
   `_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -334,7 +325,7 @@ CREATE TABLE `ccp_template` (
 --
 
 INSERT INTO `ccp_template` (`_id`, `title`, `description`, `gui_type`, `active`, `site_name`, `favicon`, `logo`, `author`, `refresh`, `viewport`, `base_url`, `color_1`, `color_2`, `color_3`, `color_4`, `color_5`, `color_6`) VALUES
-(1, 'pluton Theme', NULL, '1', '1', 'Schedulr', 'none', 'none', 'Kegan Blake', 'something', 'something', 'http://localhost:1104/schedulr/', 'black', 'white', 'black', 'white', 'black', 'white');
+(1, 'pluton Theme', NULL, '1', '1', 'Schedulr', 'none', 'engine/template/web/images/logo.png', 'Kegan Blake', 'something', 'something', 'http://localhost:1104/schedulr/', 'black', 'white', 'black', 'white', 'black', 'white');
 
 -- --------------------------------------------------------
 
@@ -342,7 +333,6 @@ INSERT INTO `ccp_template` (`_id`, `title`, `description`, `gui_type`, `active`,
 -- Table structure for table `ccp_users`
 --
 
-DROP TABLE IF EXISTS `ccp_users`;
 CREATE TABLE `ccp_users` (
   `_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -366,7 +356,6 @@ INSERT INTO `ccp_users` (`_id`, `name`, `email`, `number`) VALUES
 -- Table structure for table `ccp_views_table`
 --
 
-DROP TABLE IF EXISTS `ccp_views_table`;
 CREATE TABLE `ccp_views_table` (
   `_id` int(11) NOT NULL,
   `_category_id` int(11) NOT NULL,
@@ -387,7 +376,8 @@ CREATE TABLE `ccp_views_table` (
 --
 
 INSERT INTO `ccp_views_table` (`_id`, `_category_id`, `title`, `description`, `preview`, `view_js`, `view_css`, `topWrapper`, `bottomWrapper`, `funcction_php`, `view_css_item_id`, `view_css_item_class`) VALUES
-(1, 1, 'Default Banner styles', NULL, NULL, NULL, NULL, '<div id="da-slider" class="da-slider">\r\n	<div class="triangle"></div>\r\n	<div class="mask"></div>\r\n	<div class="container">', '	<div class="da-arrows">\r\n		<span class="da-arrows-prev"></span>\r\n		<span class="da-arrows-next"></span>\r\n	</div>\r\n</div>\r\n</div>', NULL, NULL, NULL);
+(1, 1, 'Default Banner styles', NULL, NULL, NULL, NULL, '<div id="da-slider" class="da-slider">\r\n	<div class="triangle"></div>\r\n	<div class="mask"></div>\r\n	<div class="container">', '	<div class="da-arrows">\r\n		<span class="da-arrows-prev"></span>\r\n		<span class="da-arrows-next"></span>\r\n	</div>\r\n</div>\r\n</div>', NULL, NULL, NULL),
+(2, 1, 'home Page Content View', 'fasdfasdfasfasddfasdfasdf asdf asdffasdfasdfasfasddfasdfasdf asdf asdffasdfasdfasfasddfasdfasdf asdf asdffasdfasdfasfasddfasdfasdf asdf asdffasdfasdfasfasddfasdfasdf asdf asdffasdfasdfasfasddfasdfasdf asdf asdf', NULL, NULL, NULL, '<div class="row-fluid">', '</div>', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -395,7 +385,6 @@ INSERT INTO `ccp_views_table` (`_id`, `_category_id`, `title`, `description`, `p
 -- Table structure for table `ccp_view_category`
 --
 
-DROP TABLE IF EXISTS `ccp_view_category`;
 CREATE TABLE `ccp_view_category` (
   `_id` int(11) NOT NULL,
   `_parent_id` int(11) DEFAULT NULL,
@@ -574,7 +563,7 @@ ALTER TABLE `ccp_form_template`
 -- AUTO_INCREMENT for table `ccp_pages`
 --
 ALTER TABLE `ccp_pages`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `ccp_script_code`
 --
@@ -599,7 +588,7 @@ ALTER TABLE `ccp_users`
 -- AUTO_INCREMENT for table `ccp_views_table`
 --
 ALTER TABLE `ccp_views_table`
-  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `ccp_view_category`
 --

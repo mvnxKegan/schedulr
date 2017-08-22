@@ -50,7 +50,10 @@
 				}
 				$this->writeToLog("Other");
 			}
-			if(!$this->_query = $this->_mysqli->query($sql_query)) {
+			if(!$this->_mysqli->query($sql_query)) {
+				$this->writeToLog("Error");
+			}
+			else {
 				$this->writeToLog("Error");
 			}
 			return $this;
@@ -75,6 +78,7 @@
 			if($logType === "Error"){ // Write to Error Log
 				$logRecordData = "SQL State Error:". $this->_mysqli->sqlstate;
 				$logRecordData .= " - Error Array: " . serialize($this->_mysqli->error_list);
+				$logRecordData .= "SQL Query: ". serialize($this->_query);
 				
 				$logRecord = "Date & Time: " . date("Y-m-d h:i:sa") . " - " . $logRecordData;
 				$logFile = fopen("engine/logs/errorLog.txt", "a") or die("Unable to open file!");

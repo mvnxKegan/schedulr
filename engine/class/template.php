@@ -1,21 +1,6 @@
 <?php
 	class templates {
 		
-		public function getSession(){
-			try{
-				$template = $_GET['login'];
-				
-				if($template === "backend"){
-					echo "logged in";
-				}
-				else if($template === "login"){ //If Connection successful, log in DB
-					echo "login";
-				}
-			} catch(Exception $e){
-				
-			}
-		}
-		
 		public function getCSS(){
 			$GLOBALS = $GLOBALS;
 			
@@ -91,46 +76,112 @@
 			$GLOBALS = $GLOBALS;
 			$DB = DB::getInstance();
 			$html = '';
+			$content = '';
 			
+			//Open Header
+			$html .= '<div class="navbar"><div class="navbar-inner"><div class="container">';
+			
+			//Get Header Logo
+			$DB = $DB->query("select * from ccp_template");
+			foreach($DB->results() as $template) {
+				$html .= '<a href="'. $template->base_url .'" class="brand"><img src="'. $template->logo .'" width="120" height="40" alt="Logo" /></a>';
+			}
+			
+			$html .= '<div class="nav-collapse collapse pull-right"><ul class="nav" id="top-navigation">';
+			//Get Header Navigation
+			$DB = $DB->query("select * from ccp_pages");
+			foreach($DB->results() as $navigation) {
+				$html .= '<li><a href="'. $navigation->url_key .'">'. $navigation->title .'</a></li>';
+				$content .= templates::getPage($navigation->_id);
+			}
+			$html .= '</ul></div>';
+			
+			//Mobile Menu Button
 			$html .= '
-				<div class="navbar">
-					<div class="navbar-inner">
-						<div class="container">
-							<a href="#" class="brand">
-								<img src="images/logo.png" width="120" height="40" alt="Logo" />
-								<!-- This is website logo -->
-							</a>
-							<!-- Navigation button, visible on small resolution -->
-							<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-								<i class="icon-menu"></i>
-							</button>
-							<!-- Main navigation -->
-							<div class="nav-collapse collapse pull-right">
-								<ul class="nav" id="top-navigation">
-									<li class="active"><a href="#home">Home</a></li>
-									<li><a href="#service">Services</a></li>
-									<li><a href="#portfolio">Portfolio</a></li>
-									<li><a href="#about">About</a></li>
-									<li><a href="#clients">Clients</a></li>
-									<li><a href="#price">Price</a></li>
-									<li><a href="#contact">Contact</a></li>
-								</ul>
-							</div>
-							<!-- End main navigation -->
-						</div>
-					</div>
-				</div>
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<i class="icon-menu"></i>
+				</button>
 			';
 			
+			//Close Header
+			$html .= '</div></div></div>';
+			$html .= $content;
 			echo $html;
 		}
-		public function getPage(){
+		public function getPage($pageID){
 			$GLOBALS = $GLOBALS;
 			$DB = DB::getInstance();
 			$html = '';
+			$viewID = '';
+			$bannerItems = '';
+			$pContent = '';
+			$cContent = '';
 			
+			$DB = $DB->query("select * from ccp_pages where _id = '". $pageID ."'");
+			foreach($DB->results() as $page) {
+				//Get Banner Category View ID
+				$DB = $DB->query("select * from ccp_banner_category where _id = '". $page->_banner_category_id ."'");
+				foreach($DB->results() as $bannerCategory) {$viewID = $bannerCategory->view_id;}
+				//Get Banner Items
+				$DB = $DB->query("select * from ccp_banner_item where _category_id = '". $page->_banner_category_id ."'");
+				foreach($DB->results() as $banner) {
+					$bannerItems .= '
+						<div class="da-slide">
+							<h2 class="fittext2">'. $banner->title .'</h2>
+							<h4>'. $banner->sub_title .'</h4>
+							'. $banner->content .'
+							<div class="da-img">
+								<img src="'. $banner->image .'" alt="image01" width="320">
+							</div>
+						</div>
+					';
+				}
+				//send through View
+				$html .= templates::getView($bannerItems, $viewID);
+				
+				
+				
+				//Get Parent Content Category
+				$DB = $DB->query("select * from ccp_content_category where _id = '". $page->_content_category_id ."'");
+				if($DB->results()){
+					foreach($DB->results() as $parentCategory) {
+						$html .= '
+							<div class="section primary-section" id="service">
+								<div class="container">
+									<div class="title">
+										<h1>'. $parentCategory->title .'</h1>
+										<p>'. $parentCategory->description .'</p>
+									</div>
+								</div>
+							</div>
+						';
+						
+						//Get Parent Content
+						$DB = $DB->query("select * from ccp_content_items where _category_id = '". $parentCategory->_id ."'");
+						if($DB->results()){
+							foreach($DB->results() as $parentContent) {
+								$pContent .= '
+									<div class="span4">
+										<div class="centered service">
+											<div class="circle-border zoom-in">
+												<img class="img-circle" src="'. $parentContent->content .'" alt="service 3">
+											</div>
+											'. $parentContent->content .'
+										</div>
+									</div>
+								';
+							}
+						}
+						//Send through View
+						$viewID .= $parentCategory->view_id;
+						$html .= templates::getView($pContent, $viewID);
+					}
+				}
+				
+				
+			}
 			
-			echo $html;
+			return $html;
 		}
 
 		public function getFooter(){
@@ -153,117 +204,6 @@
 			echo $html;
 		}
 
-		public function getBanner($categoryID){
-			$GLOBALS = $GLOBALS;
-			$DB = DB::getInstance();
-			$html = '';
-			$viewID = '';
-			
-			$DB = $DB->query("select * from ccp_banner_item where _category_id = '". $categoryID ."'");
-			foreach($DB->results() as $banner) {
-				$html .= '
-					<div class="da-slide">
-						<h2 class="fittext2">'. $banner->title .'</h2>
-						<h4>'. $banner->sub_title .'</h4>
-						'. $banner->content .'
-						<div class="da-img">
-							<img src="'. $banner->image .'" alt="image01" width="320">
-						</div>
-					</div>
-				';
-			}
-			$DB = $DB->query("select * from ccp_banner_category where _id = '". $categoryID ."'");
-			foreach($DB->results() as $bannerCategory) {
-				$viewID .= $bannerCategory->view_id;
-			}
-			
-			templates::getView($html, $viewID);
-		}
-		public function getContentCategory($categoryID){
-			$GLOBALS = $GLOBALS;
-			$DB = DB::getInstance();
-			$html = '';
-			$viewID = '';
-			
-			//Get Content Category requested
-			$DB = $DB->query("select * from ccp_content_items where _category_id = '". $categoryID ."'");
-			foreach($DB->results() as $banner) {
-				$html .= '';
-				$viewID = $banner->view_id;
-			}
-			
-			//get content Items related to Category
-			templates::getContent($categoryID, $viewID);
-		}
-		public function getContent($categoryID, $viewID){
-			$GLOBALS = $GLOBALS;
-			$DB = DB::getInstance();
-			$html = '';
-			
-			//Get Content Items
-			$DB = $DB->query("select * from ccp_content_items where _category_id = 1");
-			foreach($DB->results() as $content) {
-				$html .= $content->content;
-			}
-			
-			
-			//Send content Items into view
-			templates::getView($html, $viewID);
-			
-		}
-		public function getBlog($categoryID){
-			$GLOBALS = $GLOBALS;
-			$DB = DB::getInstance();
-			$html = '';
-			$viewID = '';
-			
-			$DB = $DB->query("select * from ccp_banner_item where _category_id = '". $categoryID ."'");
-			foreach($DB->results() as $banner) {
-				$html .= '
-					<div class="da-slide">
-						<h2 class="fittext2">'. $banner->title .'</h2>
-						<h4>'. $banner->sub_title .'</h4>
-						'. $banner->content .'
-						<div class="da-img">
-							<img src="'. $banner->image .'" alt="image01" width="320">
-						</div>
-					</div>
-				';
-			}
-			$DB = $DB->query("select * from ccp_banner_category where _id = '". $categoryID ."'");
-			foreach($DB->results() as $bannerCategory) {
-				$viewID .= $bannerCategory->view_id;
-			}
-			
-			templates::getView($html, $viewID);
-		}
-		public function getForm($categoryID){
-			$GLOBALS = $GLOBALS;
-			$DB = DB::getInstance();
-			$html = '';
-			$viewID = '';
-			
-			$DB = $DB->query("select * from ccp_banner_item where _category_id = '". $categoryID ."'");
-			foreach($DB->results() as $banner) {
-				$html .= '
-					<div class="da-slide">
-						<h2 class="fittext2">'. $banner->title .'</h2>
-						<h4>'. $banner->sub_title .'</h4>
-						'. $banner->content .'
-						<div class="da-img">
-							<img src="'. $banner->image .'" alt="image01" width="320">
-						</div>
-					</div>
-				';
-			}
-			$DB = $DB->query("select * from ccp_banner_category where _id = '". $categoryID ."'");
-			foreach($DB->results() as $bannerCategory) {
-				$viewID .= $bannerCategory->view_id;
-			}
-			
-			templates::getView($html, $viewID);
-		}
-		
 		public function getView($viewContent, $viewID){
 			$GLOBALS = $GLOBALS;
 			$DB = DB::getInstance();
@@ -281,7 +221,7 @@
 					'. $view->bottomWrapper .'
 				';
 			}
-			echo $html;
+			return $html;
 		}
 		
 		public function htmlBody(){
@@ -289,8 +229,6 @@
 			
 			templates::getCSS();
 			templates::getNavigation();
-			templates::getBanner('1');
-			templates::getContentCategory('2');
 			templates::getFooter();
 		}
 		
